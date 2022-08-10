@@ -1,0 +1,73 @@
+---
+title: "Untitled Draft"
+author: "Report Author"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      dev = c("ragg_png", "svg", "pdf"),
+                      dpi = 600)
+## target knits Rmds in their own session, so load libraries here.
+source(here::here("packages.R"))
+## if you want access to the functions you've written
+## lapply(list.files(here::here("./R"), full.names = TRUE), source)
+```
+
+```{r load-targets, include=FALSE}
+tar_load(c(gg_abs_age_dists_syd_alice,
+           gg_abs_age_dists_syd_melb,
+           gg_abs_age_dists_cairns_hobart))
+
+# # If your chunk output is shown in-line, then you'll need to wrap tar_load()
+# # like so:
+# 
+# withr::with_dir(here::here(), {
+#   tar_load(c(target_1, target_2, target_3))
+# })
+# 
+# # This is not needed when using tar_make() to render the document.
+```
+
+## Analysis
+
+```{r}
+#| label: gg_abs_age_dists_syd_alice
+gg_abs_age_dists_syd_alice
+```
+
+```{r}
+#| label: gg_abs_age_dists_syd_melb
+gg_abs_age_dists_syd_melb
+```
+
+```{r}
+#| label: gg_abs_age_dists_cairns_hobart
+gg_abs_age_dists_cairns_hobart
+```
+
+```{r}
+#| label: patchwork
+#| fig.width: 12
+#| fig.height: 4
+gg_abs_age_dists_syd_alice + gg_abs_age_dists_syd_melb + gg_abs_age_dists_cairns_hobart + plot_annotation(tag_levels = "A")
+```
+
+
+
+## Reproducibility
+
+<details><summary>Reproducibility receipt</summary>
+
+```{r}
+## datetime
+Sys.time()
+
+## session info
+sessionInfo()
+```
+
+</details>
