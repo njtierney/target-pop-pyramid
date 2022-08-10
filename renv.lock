@@ -272,9 +272,13 @@
       "RemoteSha": "1.1.0"
     },
     "conmat": {
-      "Source": "unknown",
+      "Source": "Repository",
       "Package": "conmat",
-      "Version": "0.0.0.9004"
+      "Version": "0.0.0.9004",
+      "Repository": "https://njtierney.r-universe.dev",
+      "RemoteUrl": "https://github.com/njtierney/conmat",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "487cca5341bf565b5482c550d57176674374a613"
     },
     "countrycode": {
       "Source": "Repository",
